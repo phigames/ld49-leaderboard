@@ -1,0 +1,4 @@
+Django==3.2.7
+django-cors-headers==3.9.0
+django-heroku
+gunicorn
