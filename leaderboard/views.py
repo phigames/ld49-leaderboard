@@ -25,7 +25,7 @@ def post_score(request):
     ).order_by("rank")
     sql, params = runs.query.sql_with_params()
     my_run = list(Run.objects.raw("""
-        SELECT "id", "created_at", "updated_at", "username", "score", "rank" FROM ({}) WHERE "id" = %s
+        SELECT "id", "created_at", "updated_at", "username", "score", "rank" FROM ({}) AS _ WHERE "id" = %s
     """.format(sql), [*params, str(my_run.id).replace("-", "")]))[0]
     return JsonResponse(
         {
